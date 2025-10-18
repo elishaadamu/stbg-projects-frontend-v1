@@ -33,7 +33,7 @@ const STBGFrontend = () => {
     { key: "aadt", name: "AADT", description: "AADT" },
     {
       key: "popemp",
-      name: "Population & Employment",
+      name: "Population",
       description: "Population and Employment TAZ",
     },
     {
@@ -48,12 +48,12 @@ const STBGFrontend = () => {
     },
     {
       key: "fhz",
-      name: "Flood Hazard Zones",
+      name: "Flood Hazard",
       description: "Flood Hazard Zones",
     },
     {
       key: "frsk",
-      name: "Flood Risk Areas",
+      name: "Flood Risk",
       description: "Flood Risk Areas",
     },
     { key: "lehd", name: "LEHD", description: "LEHD" },
@@ -327,8 +327,8 @@ const STBGFrontend = () => {
               Drag & Drop or{" "}
               <span className="text-blue-600 hover:underline">Browse</span>
             </span>
-            <span className="text-sm text-gray-500 mt-1">
-              {fileInfo.name}: {fileInfo.description}
+            <span className="text-sm font-bold text-gray-500 mt-1">
+              {fileInfo.name}
             </span>
             <input
               type="file"
@@ -481,15 +481,6 @@ const STBGFrontend = () => {
         {/* Upload Section */}
         {step === "upload" && (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-              Upload Required Data Files
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
-              {requiredFiles.map((fileInfo) => (
-                <FileUploadCard key={fileInfo.key} fileInfo={fileInfo} />
-              ))}
-            </div>
-
             {error && (
               <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/30 rounded-md">
                 <div className="flex">
@@ -502,6 +493,14 @@ const STBGFrontend = () => {
                 </div>
               </div>
             )}
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              Upload Required Data Files
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+              {requiredFiles.map((fileInfo) => (
+                <FileUploadCard key={fileInfo.key} fileInfo={fileInfo} />
+              ))}
+            </div>
           </div>
         )}
 
