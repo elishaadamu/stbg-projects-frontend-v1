@@ -179,7 +179,7 @@ const STBGFrontend = () => {
     formData.append("wet_file", files.wet);
 
     try {
-      const response = await fetch("https://stbg.onrender.com/analyze", {
+      const response = await fetch("http://127.0.0.1:8000/analyze", {
         method: "POST",
         body: formData,
       });
