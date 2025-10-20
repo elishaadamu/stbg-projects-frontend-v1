@@ -179,10 +179,13 @@ const STBGFrontend = () => {
     formData.append("wet_file", files.wet);
 
     try {
-      const response = await fetch("https://stbg.onrender.com/analyze", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://stbg-production.up.railway.app/analyze",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const results = await response.json();
       console.log(results);
