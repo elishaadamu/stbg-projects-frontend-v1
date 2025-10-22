@@ -372,7 +372,8 @@ const STBGFrontend = () => {
         </div>
       </nav>
       <div className="flex wrap justify-center mb-8 gap-4 mt-6">
-        <div
+        <button
+          onClick={loadSampleFiles}
           className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white ${
             step === "upload"
               ? "bg-blue-600 hover:bg-blue-700"
@@ -381,7 +382,7 @@ const STBGFrontend = () => {
         >
           <Upload className="w-4 h-4 mr-2" />
           Step 1: Load Data
-        </div>
+        </button>
         <button
           onClick={processData}
           disabled={
