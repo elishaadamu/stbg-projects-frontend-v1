@@ -363,42 +363,51 @@ const STBGFrontend = () => {
       />
       <nav className="bg-white dark:bg-gray-800 shadow-sm p-3  border-b border-indigo-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <div>
-              {" "}
-              <img src="/MPO_Logo.jpg" alt="MPO Logo" className="w-24" />
-            </div>
-          </Link>
+          <div className="flex items-center space-x-2">
+            <img src="/MPO_Logo.jpg" alt="MPO Logo" className="w-24" />
+          </div>
           <h2 className="text-base  md:text-[24px] font-bold text-gray-900 dark:text-gray-100">
             Project Prioritization Tool
           </h2>
         </div>
       </nav>
       <div className="flex wrap justify-center mb-8 gap-4 mt-6">
-        <button
-          onClick={loadSampleFiles}
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        <div
+          className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white ${
+            step === "upload"
+              ? "bg-blue-600 hover:bg-blue-700"
+              : "bg-gray-500 cursor-default"
+          }`}
         >
-          Load Data
-        </button>
+          <Upload className="w-4 h-4 mr-2" />
+          Step 1: Load Data
+        </div>
         <button
           onClick={processData}
           disabled={
             Object.keys(files).length < requiredFiles.length || processing
           }
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-blue-500 dark:hover:bg-blue-600"
+          className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed ${
+            step === "upload" &&
+            Object.keys(files).length === requiredFiles.length
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-gray-500"
+          }`}
         >
           <Play className="w-4 h-4 mr-2" />
-          Run Analysis
+          Step 2: Run Analysis
         </button>
-
         <button
           onClick={() => {
             setStep("upload");
             setResults(null);
             setFiles({});
           }}
-          className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-600"
+          className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 ${
+            step === "results"
+              ? "bg-yellow-500 text-white hover:bg-yellow-600"
+              : "bg-gray-300 text-gray-700 cursor-not-allowed"
+          }`}
         >
           Start New Analysis
         </button>
