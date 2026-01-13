@@ -180,7 +180,7 @@ const STBGFrontend = () => {
 
     try {
       const response = await fetch(
-        "https://stbg-production.up.railway.app/analyze",
+        "stbg-production-c464.up.railway.app/analyze",
         {
           method: "POST",
           body: formData,
